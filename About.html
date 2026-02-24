@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sonu Studio — Work</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+body{background:#0b0b0b;color:#fff;overflow-x:hidden;cursor:none}
+
+/* Cursor */
+.cursor{width:18px;height:18px;border:2px solid #fff;border-radius:50%;position:fixed;pointer-events:none;transform:translate(-50%,-50%);z-index:9999}
+.cursor-follower{width:40px;height:40px;border:1px solid rgba(255,255,255,.4);border-radius:50%;position:fixed;pointer-events:none;transform:translate(-50%,-50%);z-index:9998}
+
+/* Navbar */
+.navbar{display:flex;justify-content:space-between;align-items:center;padding:20px 50px;background:rgba(0,0,0,.7);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100}
+.logo{font-weight:700;letter-spacing:4px;font-size:20px}
+.nav-right a{margin:0 15px;text-decoration:none;color:#fff;font-size:14px}
+.nav-right a:hover{color:#ccc}
+
+/* HERO */
+.work-hero{height:70vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;animation:fadeIn 1.2s ease;margin-bottom:40px}
+.work-hero::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.55);z-index:1}
+.work-hero-content{position:relative;z-index:2;color:#fff;text-align:center}
+.work-hero h1{font-size:64px;line-height:1.1;animation:slideUp 1s ease}
+.work-hero p{margin-top:20px;color:#ccc;animation:slideUp 1.3s ease}
+.hero-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
+
+/* Filters */
+.filters{display:flex;justify-content:center;gap:15px;padding:20px;flex-wrap:wrap}
+.filters button{background:none;border:1px solid #444;color:#fff;padding:8px 18px;border-radius:30px;cursor:pointer}
+.filters button.active{background:#fff;color:#000}
+
+/* Work Grid */
+.work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;padding:20px}
+.work-card{position:relative;overflow:hidden;border-radius:16px; height:60vh;} /* BIG HEIGHT */
+.work-card video{width:100%;height:100%;object-fit:cover;display:block} /* video fills card */
+.work-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);display:flex;align-items:flex-end;padding:10px}
+
+/* Footer */
+footer{text-align:center;padding:20px;color:#777}
+
+/* Animations */
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes slideUp{from{opacity:0; transform:translateY(30px);}to{opacity:1; transform:translateY(0);}}
+
+/* Responsive */
+@media(max-width:1024px){
+    .work-card{height:50vh;}
+}
+@media(max-width:768px){
+    .work-hero h1{font-size:38px}
+    .work-card{height:40vh;}
+    .nav-right a{margin:0 8px;font-size:12px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+
+<!-- Navbar -->
+<header class="navbar">
+  <div class="logo">SONU STUDIO</div>
+  <nav class="nav-right">
+    <a href="index.html">Home</a>
+    <a href="About.html">Work</a>
+    <a href="studio.html">Studio</a>
+    <a href="Explore camera.html">Explore Camera</a>
+    <a href="Rate list.html">Rate list</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO SECTION -->
+<section class="work-hero">
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="tt (3).mp4" type="video/mp4">
+  </video>
+  <div class="work-hero-content">
+    <h1>Our Work</h1>
+    <p>Cinematic video, fashion editorials & powerful storytelling.</p>
+  </div>
+</section>
+
+<!-- Filters -->
+<div class="filters">
+  <button class="active" data-filter="all">All</button>
+  <button data-filter="wedding">Wedding</button>
+  <button data-filter="birthday">Birthday</button>
+  <button data-filter="gallery">Gallery</button>
+  <button data-filter="cinematic">Cinematic</button>
+  <button data-filter="pre-wedding">Pre Wedding</button>
+  <button data-filter="jago">Jago</button>
+  <button data-filter="ring-ceremony">Ring Ceremony</button>
+  <button data-filter="dron-shoot">Dron Shoot</button>
+</div>
+
+<!-- Work Grid -->
+<section class="work-grid">
+  <div class="work-card wedding">
+    <video muted loop playsinline preload="metadata" src="vidio6.s.mp4"></video>
+    <div class="work-overlay"><h3>Wedding</h3></div>
+  </div>
+  <div class="work-card birthday">
+    <video muted loop playsinline preload="metadata" src="songoka.mp4"></video>
+    <div class="work-overlay"><h3>Birthday</h3></div>
+  </div>
+  <div class="work-card gallery">
+    <video muted loop playsinline preload="metadata" src="tushar.mp4"></video>
+    <div class="work-overlay"><h3>Gallery</h3></div>
+  </div>
+  <div class="work-card cinematic">
+    <video muted loop playsinline preload="metadata" src="vidio.mp4"></video>
+    <div class="work-overlay"><h3>Cinematic</h3></div>
+  </div>
+  <div class="work-card pre-wedding">
+    <video muted loop playsinline preload="metadata" src="sonu studio prewedding final.-.mp4"></video>
+    <div class="work-overlay"><h3>Pre Wedding</h3></div>
+  </div>
+  <div class="work-card jago">
+    <video muted loop playsinline preload="metadata" src="SONU PHOTOGRAPHY.mp4"></video>
+    <div class="work-overlay"><h3>Jago</h3></div>
+  </div>
+  <div class="work-card ring-ceremony">
+    <video id="ringVideo" muted loop playsinline preload="metadata" src="Ring Ceremony.mp4"></video>
+    <div class="work-overlay"><h3>Ring Ceremony</h3></div>
+  </div>
+  <div class="work-card dron-shoot">
+    <video muted loop playsinline preload="metadata" src="di360.MP4"></video>
+    <div class="work-overlay"><h3>Dron Shoot</h3></div>
+  </div>
+</section>
+
+<footer>© 2026 Sonu Studio</footer>
+
+<script>
+/* Cursor */
+const c=document.querySelector('.cursor'),f=document.querySelector('.cursor-follower');
+document.addEventListener('mousemove',e=>{
+  c.style.left=f.style.left=e.clientX+'px';
+  c.style.top=f.style.top=e.clientY+'px';
+});
+
+/* Smart Video Play */
+const videos=document.querySelectorAll('.work-card video');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    const v=e.target;
+    if(e.isIntersecting){
+      if(v.id==="ringVideo" && v.currentTime<16) v.currentTime=16;
+      v.play().catch(()=>{});
+    } else v.pause();
+  });
+},{threshold:0.5});
+videos.forEach(v=>observer.observe(v));
+
+/* Filter */
+document.querySelectorAll('.filters button').forEach(btn=>{
+  btn.onclick=()=>{
+    document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f=btn.dataset.filter;
+    document.querySelectorAll('.work-card').forEach(card=>{
+      card.style.display=(f==="all"||card.classList.contains(f))?"block":"none";
+    });
+  };
+});
+</script>
+
+
+</body>
+</html>
