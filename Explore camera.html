@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Explore Camera | SONU Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background: #0b0b0b;
+  color: #fff;
+  cursor: none; /* hide default cursor */
+  scroll-behavior: smooth;
+}
+
+/* Custom Cursor */
+.cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #c7a76c;
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: transform 0.15s ease, background 0.2s ease;
+  z-index: 9999;
+}
+
+.cursor.hover {
+  transform: translate(-50%, -50%) scale(2.2);
+  background: rgba(199,167,108,0.3);
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  position: sticky;
+  top: 0;
+  background: #0b0b0b;
+  z-index: 100;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 22px;
+}
+
+.nav-center a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 14px;
+  transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
+}
+
+.nav-center a:hover {
+  color: #c7a76c;
+  transform: scale(1.1) rotate(2deg);
+  text-shadow: 0 0 10px #c7a76c;
+}
+
+/* Hero */
+.camera-hero {
+  padding: 80px 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.camera-hero h1 {
+  font-size: 52px;
+  line-height: 1.1;
+  opacity: 0;
+  transform: translateY(-40px);
+  animation: heroText 1s forwards 0.5s;
+}
+
+.camera-hero span {
+  color: #c7a76c;
+}
+
+.camera-hero p {
+  margin-top: 20px;
+  color: #aaa;
+  max-width: 450px;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: heroText 1s forwards 1s;
+}
+
+.camera-hero img {
+  width: 100%;
+  border-radius: 10px;
+  opacity: 0;
+  transform: scale(0.95) rotate(-2deg);
+  animation: heroImage 1s forwards 1.5s;
+  transition: transform 0.3s ease;
+}
+
+/* Camera Grid */
+.camera-section {
+  padding: 80px 60px;
+}
+
+.camera-section h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s forwards 0.5s;
+}
+
+.camera-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.camera-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #111;
+  transition: transform 0.5s, box-shadow 0.5s;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.camera-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.camera-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 50px rgba(199,167,108,0.6);
+}
+
+.camera-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.6s ease, filter 0.5s ease;
+}
+
+.camera-card:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.05);
+}
+
+.camera-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.camera-card:hover .camera-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.camera-info h4 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.camera-info span {
+  font-size: 12px;
+  color: #ccc;
+  display: block;
+}
+
+.camera-info p {
+  font-size: 13px;
+  color: #aaa;
+  margin-top: 3px;
+}
+
+.camera-info .price {
+  color: #c7a76c;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+/* Animations */
+@keyframes heroText {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroImage {
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+  .camera-hero {
+    grid-template-columns: 1fr;
+    padding: 60px 30px;
+  }
+  .camera-section {
+    padding: 60px 30px;
+  }
+  .navbar {
+    padding: 15px 30px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<header class="navbar">
+  <div class="logo">SONU Studio</div>
+  <nav class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="About.html">Work</a>
+    <a href="studio.html">Studio</a>
+   <a href="Explore camera.html">Explore Camera</a>
+    <a href="Rate list.html">Rate list</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="camera-hero">
+  <div>
+    <h1>EXPLORE<br><span>CAMERA</span><br>GEAR</h1>
+    <p>
+      Professional cameras & lenses used to capture cinematic visuals,
+      weddings, films, and timeless moments.
+    </p>
+  </div>
+  <img src="dron2.webp" alt="Drone" id="heroImg">
+</section>
+
+<!-- CAMERA GRID -->
+<section class="camera-section">
+  <h2>Our Camera Collection</h2>
+
+  <div class="camera-grid" id="cameraGrid">
+
+    <div class="camera-card">
+      <img src="z5.jpg" alt="SONY FX3">
+      <div class="camera-info">
+        <h4>SONY FX3</h4>
+        <span>Cinema Line</span>
+        <p>Ultra HD 4K / 120fps, Full-frame Sensor, ISO 80-409600, S-Cinetone</p>
+        <p class="price">₹5000</p>
+      </div>
+    </div>
+
+    <div class="camera-card">
+      <img src="sony2.jpg" alt="Canon R5">
+      <div class="camera-info">
+        <h4>Canon R5</h4>
+        <span>Mirrorless</span>
+        <p>8K / 30fps, Full Frame, 45MP, Dual Pixel CMOS AF, ISO 100-51200</p>
+        <p class="price">₹3500</p>
+      </div>
+    </div>
+
+    <div class="camera-card">
+      <img src="dron88.jpg" alt="DJI Air 3S">
+      <div class="camera-info">
+        <h4>DJI Air 3S</h4>
+        <span>Stabilizer</span>
+        <p>Supports up to 4K cameras, 3-axis stabilization, SmoothTrack tech</p>
+        <p class="price">₹6000</p>
+      </div>
+    </div>
+
+    <div class="camera-card">
+      <img src="gimble.jpg" alt="Cinematic Lens">
+      <div class="camera-info">
+        <h4>Cinematic Lens</h4>
+        <span>Prime Lens</span>
+        <p>Full Frame, f1.4 Aperture, 50mm focal length, Ultra sharp</p>
+        <p class="price">₹5000</p>
+      </div>
+    </div>
+
+    <div class="camera-card">
+      <img src="all claction.webp" alt="DJI Ronin">
+      <div class="camera-info">
+        <h4>DJI Ronin</h4>
+        <span>Stabilizer</span>
+        <p>Supports up to 6K cameras, Lightweight, Brushless motors, 3-axis</p>
+        <p class="price">₹30,000</p>
+      </div>
+    </div>
+
+    <div class="camera-card">
+      <img src="all claction2.webp" alt="DJI Ronin 2">
+      <div class="camera-info">
+        <h4>DJI Ronin 2</h4>
+        <span>Stabilizer</span>
+        <p>Lightweight & Portable, 3-axis stabilization, Quick setup</p>
+        <p class="price">₹50,000</p>
+      </div>
+    </div>
+
+    <div class="camera-card">
+      <img src="booth3.jpg" alt="Photo Booth">
+      <div class="camera-info">
+        <h4>Photo Booth</h4>
+        <span>Booth Camera</span>
+        <p>HD resolution, Event-ready, Instant photo printing, Easy setup</p>
+        <p class="price">₹10,000</p>
+      </div>
+    </div>
+
+    <div class="camera-card">
+      <img src="gim4.jpg" alt="Gimbal Lens">
+      <div class="camera-info">
+        <h4>Gimbal Lens</h4>
+        <span>Stabilizer Lens</span>
+        <p>Full Frame, 24-70mm focal range, Supports handheld gimbals</p>
+        <p class="price">₹7000</p>
+      </div>
+    </div>
+<div class="camera-card">
+  <img src="zs2.jpg" alt="Nikon Z5 II Camera">
+  <div class="camera-info">
+    <h4>Nikon Z5 II</h4>
+    <span>Stabilizer Lens</span>
+    <p>Full Frame, 24-70mm focal range, Supports handheld gimbals</p>
+    <p><strong>Camera Quality:</strong></p>
+    <ul>
+      <li>24.3 MP Full-frame BSI CMOS sensor – excellent low-light performance</li>
+      <li>ISO 100–51,200 – flexible for day & night shoots</li>
+      <li>273-point Hybrid Autofocus with Eye Detection</li>
+      <li>4K UHD video at 30fps, Full HD at 120fps</li>
+      <li>5-axis in-body image stabilization – smooth handheld shots</li>
+      <li>Weather-sealed build – suitable for outdoor shooting</li>
+    </ul>
+    <p class="price">₹7000</p>
+  </div>
+</div>
+ <div class="camera-card">
+  <img src="sony m4.webp" alt="Sony M4 Camera">
+  <div class="camera-info">
+    <h4>Sony M4</h4>
+    <span>Stabilizer Lens</span>
+    <p>Full Frame, 24-70mm focal range, Supports handheld gimbals</p>
+    <p><strong>Camera Quality:</strong></p>
+     <p class="price">₹3500</p>
+  </div>
+</div>
+ <div class="camera-card">
+      <img src="live setup.webp" alt="live setup.webp">
+      <div class="camera-info">
+        <h4>live setup.webp</h4>
+        <span>Stabilizer Lens</span>
+        <p>Full Frame, 24-70mm focal range, Supports handheld gimbals</p>
+        <p class="price">₹10,000</p>
+      </div>
+    </div>
+    <div class="camera-card">
+  <img src="booth.jpg" alt="Portable Selfie Booth">
+  <div class="camera-info">
+    <h4>Portable Selfie Booth</h4>
+    <span>Event & Party Photo Booth</span>
+    <p>This portable selfie/photo booth is ideal for weddings, birthdays, corporate and social events.</p>
+    
+    <p><strong>Camera & Quality Features (2026):</strong></p>
+    
+    
+    <p class="price">Approx. Price: ₹15,000 (booth only)</p>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<script>
+// Custom Cursor
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+
+// Hover effect on cards and links
+document.querySelectorAll('.camera-card, .nav-center a').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+
+// Scroll reveal for cards
+const cards = document.querySelectorAll('.camera-card');
+function revealCards() {
+  const windowBottom = window.innerHeight;
+  cards.forEach(card => {
+    const cardTop = card.getBoundingClientRect().top;
+    if(cardTop < windowBottom - 50) {
+      card.classList.add('visible');
+    }
+  });
+}
+window.addEventListener('scroll', revealCards);
+window.addEventListener('load', revealCards);
+</script>
+
+</body>
+</html>
