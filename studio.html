@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SONU Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ---------- BASIC ---------- */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #0d0d0d;
+  color: #fff;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ---------- MODERN CURSOR ---------- */
+.cursor, .cursor-trail {
+  position: fixed;
+  top:0; left:0;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9999;
+  transform: translate(-50%,-50%);
+  transition: transform 0.1s ease-out, width 0.2s ease, height 0.2s ease;
+}
+.cursor {
+  width:16px;
+  height:16px;
+  background: conic-gradient(#ff6a00,#ee0979,#ff6a00);
+  box-shadow: 0 0 15px #ff6a00,0 0 25px #ee0979;
+}
+.cursor.hover {
+  width:60px;
+  height:60px;
+  background: rgba(255,106,0,0.15);
+  box-shadow: 0 0 50px rgba(255,106,0,0.4),0 0 80px rgba(238,9,121,0.3);
+}
+.cursor-trail {
+  width:25px; height:25px;
+  background: radial-gradient(circle,#ff6a00,transparent);
+  mix-blend-mode: lighten;
+  animation: trailMove 1.2s linear infinite alternate;
+}
+@keyframes trailMove {
+  0%{transform: scale(1) rotate(0deg);}
+  50%{transform: scale(1.5) rotate(180deg);}
+  100%{transform: scale(1) rotate(360deg);}
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+  position: fixed;
+  top:0; left:0;
+  width:100%;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:15px 60px;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(12px);
+  z-index: 999;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+.nav-left .logo {
+  font-weight: bold;
+  font-size: 24px;
+  color:#fff;
+}
+.nav-right {
+  display:flex;
+  gap:25px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.nav-right a {
+  text-decoration:none;
+  color:#fff;
+  font-weight:500;
+  white-space: nowrap;
+  transition: color 0.3s, transform 0.3s;
+}
+.nav-right a:hover {
+  color:#ff6a00;
+  transform: scale(1.2) rotate(-5deg);
+}
+
+/* ---------- BRAND ANIMATION ---------- */
+.brand {
+  text-align:center;
+  padding:100px 0;
+  font-size:80px;
+  font-weight:bold;
+  letter-spacing:15px;
+  color:#fff;
+  text-transform: uppercase;
+  opacity:0;
+  transform: translateY(-80px);
+  transition: all 1s ease;
+  display:flex;
+  justify-content:center;
+  flex-wrap: wrap;
+  gap:10px;
+}
+.brand.show {opacity:1; transform: translateY(0);}
+.brand span {
+  display:inline-block;
+  opacity:0;
+  color:#ff6a00;
+  animation: neonBounce 1s forwards, neonFlicker 2s infinite alternate;
+  text-shadow: 0 0 10px #ff6a00, 0 0 20px #ee0979, 0 0 30px #ff6a00;
+}
+@keyframes neonBounce {
+  0% {opacity:0; transform: translateY(50px) scale(0.5);}
+  50% {opacity:1; transform: translateY(-15px) scale(1.2);}
+  100% {opacity:1; transform: translateY(0) scale(1);}
+}
+@keyframes neonFlicker {
+  0%,100% {text-shadow: 0 0 10px #ff6a00, 0 0 20px #ee0979, 0 0 30px #ff6a00;}
+  25% {text-shadow: 0 0 20px #ff6a00, 0 0 25px #ee0979, 0 0 35px #ff6a00;}
+  50% {text-shadow: 0 0 5px #ff6a00, 0 0 10px #ee0979, 0 0 15px #ff6a00;}
+  75% {text-shadow: 0 0 15px #ff6a00, 0 0 25px #ee0979, 0 0 40px #ff6a00;}
+}
+
+/* ---------- STUDIO ---------- */
+.studio {
+  padding:100px 10%;
+  position:relative;
+  overflow:hidden;
+}
+.studio::before {
+  content:normal;
+  position:absolute;
+  top:-50%; left:-50%;
+  width:200%; height:200%;
+  background: radial-gradient(circle, rgba(255,106,0,0.05) 0%, transparent 70%);
+  animation: rotateBG 120s linear infinite;
+  z-index:0;
+}
+@keyframes rotateBG {0%{transform: rotate(0deg);}100%{transform: rotate(360deg);}}
+
+/* ---------- CONTENT ---------- */
+.studio-content {
+  display:flex;
+  gap:60px;
+  align-items:center;
+  margin-bottom:70px;
+  flex-wrap:wrap;
+}
+.studio-text, .studio-media {
+  opacity:0; transform:translateY(50px) rotateX(15deg);
+  transition: all 1s cubic-bezier(0.68,-0.55,0.27,1.55);
+}
+.studio-text.show, .studio-media.show {opacity:1; transform:translateY(0) rotateX(0);}
+.studio-text{flex:1;}
+.studio-text h3{font-size:30px;margin-bottom:20px;}
+.studio-text p{line-height:1.8; opacity:0.85; font-size:17px;}
+.studio-media{flex:1; perspective:900px;}
+.studio-media img {
+  width:90%; border-radius:14px;
+  transition: transform 0.8s ease, box-shadow 0.8s ease;
+}
+.studio-media img:hover {
+  transform: scale(1.2) rotateY(12deg) rotateX(8deg);
+  box-shadow:0 10px 10px rgba(255,106,0,0.6);
+
+}
+
+/* ---------- SERVICES ---------- */
+.studio-services {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+  margin-bottom:80px;
+}
+.service-box {
+  background:#1c1c1c;
+  padding:35px;
+  border-radius:14px;
+  text-align:center;
+  opacity:0; transform:translateY(50px) scale(0.8);
+  transition: all 0.8s cubic-bezier(0.68,-0.55,0.27,1.55);
+}
+.service-box.show {opacity:1; transform:translateY(0) scale(1);}
+.service-box:hover {
+  transform: scale(1.2) translateY(-12px) rotate(-3deg);
+  box-shadow:0 20px 80px rgba(255,106,0,0.6);
+  border:2px solid #ff6a00;
+  animation: shine 1s infinite;
+}
+@keyframes shine {
+  0% {box-shadow:0 20px 80px rgba(255,106,0,0.6);}
+  50% {box-shadow:0 25px 100px rgba(255,106,0,0.8);}
+  100% {box-shadow:0 20px 80px rgba(255,106,0,0.6);}
+}
+
+/* ---------- LOCATION ---------- */
+.studio-location {
+  text-align:center; opacity:0; transform:translateY(50px);
+  transition:all 1s ease;
+}
+.studio-location.show {opacity:1; transform:translateY(0);}
+.studio-location h3{font-size:26px; margin-bottom:12px;}
+.studio-location p{opacity:0.7; margin-bottom:30px;}
+.studio-location iframe {width:100%; height:400px; border:none; border-radius:12px; transition: transform 0.5s;}
+.studio-location iframe:hover {transform: scale(1.05);}
+
+/* ---------- FLOATING PARTICLES ---------- */
+.particle {
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+  animation: floatParticle linear infinite;
+  opacity:0.6;
+}
+@keyframes floatParticle {
+  0%{transform:translateY(0) translateX(0);}
+  100%{transform:translateY(-1200px) translateX(300px);}
+}
+
+/* ---------- PARALLAX ---------- */
+[data-parallax] {transform: translateY(0px); transition: transform 0.3s ease-out;}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:1024px){
+  .navbar{padding:15px 30px;}
+  .nav-right{gap:15px;}
+}
+@media(max-width:768px){
+  .studio-content{flex-direction:column;}
+  .nav-right{flex-direction:column; gap:10px; margin-top:10px;}
+  .brand{font-size:50px; letter-spacing:8px;}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor"></div>
+<div class="cursor-trail"></div>
+
+<header class="navbar">
+  <div class="nav-left"><span class="logo">SONU Studio</span></div>
+  <nav class="nav-right">
+    <a href="index.html">Home</a>
+    <a href="About.html">Work</a>
+    <a href="studio.html">Studio</a>
+ <a href="Explore camera.html">Explore Camera</a>
+      <a href="Rate list.html">Rate list</a>
+    <a href="contact.html">Contact</a>
+
+  </nav>
+</header>
+
+<div class="brand">
+  <span>S</span><span>O</span><span>N</span><span>U</span> 
+  <span>S</span><span>T</span><span>U</span><span>D</span><span>I</span><span>O</span>
+</div>
+
+<section class="studio" id="studio">
+  <div class="studio-header" data-parallax="0.5">
+    <h2>
+      <span>S</span><span>O</span><span>N</span><span>U</span> 
+      <span>S</span><span>T</span><span>U</span><span>D</span><span>I</span><span>O</span>
+    </h2>
+    <p>High-end image retouching, CGI, and digital editing services for brands and photographers.</p>
+  </div>
+
+  <div class="studio-content">
+    <div class="studio-text" data-parallax="0.3">
+      <h3>About SONU Studio</h3>
+      <p>Professional photography & cinematography studio creating visuals for weddings, fashion, portraits, and brand films.</p>
+      <p>Every project is crafted with emotion, detail, and a cinematic touch.</p>
+    </div>
+    <div class="studio-media" data-parallax="0.4">
+      <img src="shop2.jpg" alt="Studio Image">
+    </div>
+  </div>
+
+  <div class="studio-services">
+    <div class="service-box" data-parallax="0.2"><h4>Photography</h4><p>Portraits, fashion & weddings</p></div>
+    <div class="service-box" data-parallax="0.2"><h4>Cinematography</h4><p>Pre-wedding & brand films</p></div>
+    <div class="service-box" data-parallax="0.2"><h4>Creative Direction</h4><p>Concept & visual planning</p></div>
+  </div>
+
+  <div class="studio-location" data-parallax="0.1">
+    <h3>Studio Location</h3>
+    <p>Mahrian, Punjab · Ambala to Ganaur Road</p>
+    <iframe src="https://www.google.com/maps?q=Ambala+Ganaur+Road,+Mahrian,+Punjab,+India&hl=en&z=15&output=embed" loading="lazy"></iframe>
+  </div>
+</section>
+
+<script>
+// ---------- CURSOR ----------
+const cursor = document.querySelector('.cursor');
+const trail = document.querySelector('.cursor-trail');
+document.addEventListener('mousemove', e=>{
+  cursor.style.top = e.clientY+'px';
+  cursor.style.left = e.clientX+'px';
+  trail.style.top = e.clientY+'px';
+  trail.style.left = e.clientX+'px';
+});
+document.querySelectorAll('a, .service-box, .studio-media img').forEach(el=>{
+  el.addEventListener('mouseenter', ()=>cursor.classList.add('hover'));
+  el.addEventListener('mouseleave', ()=>cursor.classList.remove('hover'));
+});
+
+// ---------- SHOW NAVBAR & BRAND ----------
+window.addEventListener('load', ()=>{
+  document.querySelector('.navbar').classList.add('show');
+  document.querySelector('.brand').classList.add('show');
+});
+
+// ---------- SCROLL ANIMATION ----------
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('show');}
+  });
+},{threshold:0.2});
+document.querySelectorAll('.studio-header, .studio-text, .studio-media, .service-box, .studio-location')
+  .forEach(el=>observer.observe(el));
+
+// ---------- LETTER ANIMATION ----------
+const letters = document.querySelectorAll('.studio-header h2 span, .brand span');
+letters.forEach((letter, idx)=>{
+  letter.style.animationDelay=(idx*0.1)+'s';
+});
+
+// ---------- FLOATING PARTICLES ----------
+for(let i=0;i<60;i++){
+  let particle=document.createElement('div');
+  particle.className='particle';
+  particle.style.left=Math.random()*100+'%';
+  particle.style.top=Math.random()*100+'%';
+  particle.style.width=2+Math.random()*6+'px';
+  particle.style.height=2+Math.random()*6+'px';
+  particle.style.background=`rgba(255,${50+Math.random()*205},0,${0.2+Math.random()*0.5})`;
+  particle.style.animationDuration=6+Math.random()*12+'s';
+  particle.style.filter=`blur(${1+Math.random()*2}px)`;
+  document.body.appendChild(particle);
+}
+
+// ---------- PARALLAX ----------
+window.addEventListener('scroll', ()=>{
+  document.querySelectorAll('[data-parallax]').forEach(el=>{
+    const speed = el.getAttribute('data-parallax');
+    const offset = window.scrollY * speed;
+    el.style.transform = `translateY(${offset}px)`;
+  });
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
