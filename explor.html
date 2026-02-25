@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Explore Work | SONU Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+body { margin:0; padding:0; font-family:'Montserrat',sans-serif; background:#111; color:#fff; overflow-x:hidden; }
+header { display:flex; justify-content:space-between; align-items:center; padding:20px 10%; background:#000; position:sticky; top:0; z-index:100; }
+header .logo { font-size:28px; font-weight:bold; color:#ff6a00; letter-spacing:2px; }
+header nav a { margin:0 15px; text-decoration:none; color:#fff; transition:0.3s; }
+header nav a:hover { color:#ff6a00; }
+
+/* Hero Section */
+.hero { text-align:center; padding:80px 10%; }
+.hero h1 { font-size:48px; margin-bottom:20px; color:#ff6a00; opacity:0; transform:translateY(50px); animation:fadeSlide 1s forwards; }
+.hero p { font-size:20px; color:#ccc; opacity:0; transform:translateY(50px); animation:fadeSlide 1s forwards 0.5s; }
+
+/* Filter Buttons */
+.filters { text-align:center; margin:40px 0; }
+.filters button { padding:12px 25px; margin:5px; border:none; border-radius:8px; background:#222; color:#fff; cursor:pointer; font-size:16px; transition:0.3s; }
+.filters button.active, .filters button:hover { background:#ff6a00; color:#fff; transform:scale(1.05); }
+
+/* Portfolio Grid */
+.portfolio-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; padding:0 10%; }
+.work-card { position:relative; overflow:hidden; border-radius:10px; cursor:pointer; opacity:0; transform:translateY(50px); transition:0.5s; }
+.work-card img, .work-card video { width:100%; display:block; transition:0.6s ease; }
+.work-card:hover img, .work-card:hover video { transform:scale(1.05); filter:brightness(1.2);}
+.work-overlay { position:absolute; bottom:0; left:0; width:100%; padding:15px; background:rgba(0,0,0,0.6); text-align:center; color:#fff; transform:translateY(100%); opacity:0; transition:0.5s ease; border-radius:0 0 10px 10px; }
+.work-card:hover .work-overlay { transform:translateY(0); opacity:1; }
+
+/* Animations */
+@keyframes fadeSlide { 0%{opacity:0; transform:translateY(50px);} 100%{opacity:1; transform:translateY(0);} }
+
+/* Responsive */
+@media(max-width:768px){ .hero h1 { font-size:36px; } }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">SONU</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="About.html">Work</a>
+    <a href="studio.html">Studio</a>
+    <a href="contact.html">Contact</a>
+    <a href="Rate list.html">rate-list</a>
+    
+
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Explore Our Work</h1>
+  <p>Discover our latest photography and cinematic projects</p>
+</section>
+
+<!-- Filters -->
+<div class="filters">
+  <button class="active" data-filter="all">All</button>
+  <button data-filter="wedding">Wedding</button>
+  <button data-filter="film">Film</button>
+  <button data-filter="fashion">Fashion</button>
+  <button data-filter="studio">Studio</button>
+</div>
+
+<!-- Portfolio Grid -->
+<div class="portfolio-grid">
+  <div class="work-card" data-category="wedding"><video autoplay muted loop playsinline><source src="waddig.mp4" type="video/mp4"></video><div class="work-overlay"><h4>Royal Wedding</h4><span>Wedding</span></div></div>
+  <div class="work-card" data-category="film"><video autoplay muted loop playsinline><source src="vidio.mp4" type="video/mp4"></video><div class="work-overlay"><h4>Cinematic Story</h4><span>Film</span></div></div>
+  <div class="work-card" data-category="fashion"><img src="https://source.unsplash.com/500x700/?fashion"><div class="work-overlay"><h4>Editorial Shoot</h4><span>Fashion</span></div></div>
+  <div class="work-card" data-category="studio"><img src="https://source.unsplash.com/500x700/?studio"><div class="work-overlay"><h4>Studio Portrait</h4><span>Studio</span></div></div>
+  <div class="work-card" data-category="film"><video autoplay muted loop playsinline><source src="vidio6.s.mp4" type="video/mp4"></video><div class="work-overlay"><h4>Creative Reel</h4><span>Film</span></div></div>
+  <div class="work-card" data-category="film"><img src="https://source.unsplash.com/500x700/?cinematic"><div class="work-overlay"><h4>Cinematic Frame</h4><span>Film</span></div></div>
+  <div class="work-card" data-category="wedding"><video autoplay muted loop playsinline><source src="vidio7.mp4" type="video/mp4"></video><div class="work-overlay"><h4>Wedding Moments</h4><span>Wedding</span></div></div>
+  <div class="work-card" data-category="studio"><img src="https://source.unsplash.com/500x700/?portrait"><div class="work-overlay"><h4>Portrait Light</h4><span>Studio</span></div></div>
+</div>
+
+<script>
+// Scroll fade-in animation
+const faders = document.querySelectorAll('.work-card, .hero h1, .hero p');
+const appearOptions = { threshold:0.1, rootMargin:"0px 0px -50px 0px" };
+const appearOnScroll = new IntersectionObserver((entries, observer)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){ entry.target.style.opacity=1; entry.target.style.transform='translateY(0)'; observer.unobserve(entry.target); }
+  });
+}, appearOptions);
+faders.forEach(fader=>appearOnScroll.observe(fader));
+
+// Filter functionality
+const filterBtns = document.querySelectorAll('.filters button');
+const workCards = document.querySelectorAll('.work-card');
+filterBtns.forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    filterBtns.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.getAttribute('data-filter');
+    workCards.forEach(card=>{
+      if(filter === 'all' || card.getAttribute('data-category') === filter){ card.style.display='block'; }
+      else{ card.style.display='none'; }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
