@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact | SONU Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+/* ===== BODY ===== */
+body{
+  font-family:Poppins,sans-serif;
+  margin:0;
+  background:linear-gradient(-45deg,#111,#222,#111,#333);
+  background-size:400% 400%;
+  animation:gradientBG 20s ease infinite;
+  color:#fff;
+  cursor:none;
+}
+@keyframes gradientBG{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* ===== CUSTOM CURSOR ===== */
+.cursor{
+  position:fixed;
+  width:20px;
+  height:20px;
+  border:2px solid #ff6a00;
+  border-radius:50%;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  transition:0.1s ease;
+  z-index:9999;
+}
+.cursor::after{
+  content:"";
+  position:absolute;
+  width:8px;
+  height:8px;
+  background:#ff6a00;
+  border-radius:50%;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+.cursor.active{
+  transform:translate(-50%,-50%) scale(1.8);
+  background:rgba(255,106,0,0.2);
+}
+
+/* ===== NAVBAR ===== */
+header.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 50px;
+  background:#111;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+header.navbar .logo{
+  font-size:24px;
+  font-weight:800;
+  color:#ff6a00;
+}
+nav.nav-center a{
+  color:#fff;
+  margin-left:30px;
+  text-decoration:none;
+  font-weight:600;
+}
+nav.nav-center a:hover{
+  color:#ff6a00;
+}
+
+/* ===== HEADING ===== */
+h2{text-align:center;margin:40px 0;}
+
+/* ===== FORM ===== */
+form{
+  max-width:600px;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+input,select,textarea{
+  padding:14px;
+  border-radius:8px;
+  border:none;
+  background:#222;
+  color:#fff;
+}
+button{
+  padding:15px;
+  background:#ff6a00;
+  border:none;
+  border-radius:8px;
+  font-size:18px;
+  color:#fff;
+  cursor:pointer;
+}
+button:hover{background:#ee0979;}
+
+/* ===== POPUP ===== */
+.popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:.4s;
+}
+.popup.show{
+  opacity:1;
+  pointer-events:auto;
+}
+.popup-box{
+  width:380px;
+  max-width:90%;
+  padding:30px;
+  background:#111;
+  border-radius:16px;
+  text-align:center;
+  box-shadow:0 0 40px rgba(255,106,0,.6);
+}
+.popup-box h3{color:#ff6a00;}
+.popup-box p{color:#ccc;}
+.ok-btn{
+  padding:12px 25px;
+  border:none;
+  border-radius:8px;
+  background:#ff6a00;
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+}
+.ok-btn:hover{background:#ee0979;}
+#qrCodeContainer{margin-top:20px;}
+
+/* ===== CONTACT INFO ===== */
+.contact-info{
+  margin:80px auto 40px;
+  max-width:700px;
+  text-align:center;
+  padding:30px;
+  background:rgba(0,0,0,.4);
+  border-radius:16px;
+}
+.contact-info h3{color:#ff6a00;}
+.contact-info p{color:#ccc;}
+
+</style>
+</head>
+
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<header class="navbar">
+  <div class="logo">SONU Studio</div>
+  <nav class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="About.html">Work</a>
+    <a href="studio.html">Studio</a>
+    <a href="Explore camera.html">Explore Camera</a>
+
+    <a href="Rate list.html">Rate list</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<h2>Contact SONU Studio</h2>
+
+<form id="contactForm">
+  <input name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <input name="phone" placeholder="Phone Number" required>
+  <select required>
+    <option value="">Select Function</option>
+    
+
+
+
+<option>Wedding</option>
+    <option>Pre-Wedding</option>
+    <option>Fashion Shoot</option>
+    <option>Brand Shoot</option>
+     <option>Wedding</option>
+    <option>Pre-Wedding</option>
+    <option>Fashion Shoot</option>
+    <option>Brand Shoot</option>
+    <option>Haldi Shoot</option>
+    <option>Engagement Shoot</option>
+    <option>Travel / Destination Shoot</option>
+    <option>Product Shoot</option>
+    <option>Newborn Shoot</option>
+    <option>Family Portrait</option>
+    <option>Music Video</option>
+    <option>Commercial Shoot</option>
+    <option>Portfolio Shoot</option>
+    <option>Fashion Catalog</option>
+    <option>Festival Shoot</option>
+    <option>Vlog / YouTube Content</option>
+    <option>Sports Event</option>
+    <option>Film / TV Shoot</option>
+    <option>Wedding Documentary</option>
+    <option>Anniversary Shoot</option>
+    <option>Corporate Headshots</option>
+    <option>Event Coverage</option>
+    <option>Social Campaign Shoot</option>
+    <option>Training Video Shoot</option>
+    <option>Product Launch Shoot</option>
+  </select>
+  <input type="date" required>
+  <input type="time" required>
+  <textarea placeholder="Tell us about your function" required></textarea>
+  <button type="submit">Send Inquiry</button>
+</form>
+
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <h3>✅ Booking Received</h3>
+    <p id="popupText"></p>
+    <div id="qrCodeContainer"></div>
+    <button class="ok-btn" id="popupOk">OK</button>
+  </div>
+</div>
+
+<section class="contact-info">
+  <h3>SONU Studio</h3>
+  <p>📞 Phone: <b>9592195240</b></p>
+  <p>📧 Email: <b>sonustdio1111@gmail.com</b></p>
+  <a href="https://www.youtube.com/@sonustudio9172" target="_blank">▶ YouTube Channel – SONU Studio</a>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+
+  const cursor=document.getElementById("cursor");
+  document.addEventListener("mousemove",e=>{
+    cursor.style.left=e.clientX+"px";
+    cursor.style.top=e.clientY+"px";
+  });
+  document.querySelectorAll("a,button,input,textarea,select").forEach(el=>{
+    el.addEventListener("mouseenter",()=>cursor.classList.add("active"));
+    el.addEventListener("mouseleave",()=>cursor.classList.remove("active"));
+  });
+
+  const form=document.getElementById("contactForm");
+  const popup=document.getElementById("popup");
+  const popupText=document.getElementById("popupText");
+  const popupOk=document.getElementById("popupOk");
+  const qrContainer=document.getElementById("qrCodeContainer");
+
+  const totalAmount=20000;
+  const halfAmount=totalAmount/2;
+  const upiId="sonustudio1111@okaxis";
+  const payeeName="Narinder kumar";
+  const note="SONU Studio Booking Advance";
+
+  form.addEventListener("submit",e=>{
+    e.preventDefault();
+    popupText.innerHTML=
+      "Thank you for contacting <b>SONU Studio</b>.<br><br>"+
+      "Your booking request has been submitted successfully.<br>"+
+      "📞 <b>We will call you within 1 hour.</b><br><br>"+
+      "Click <b>OK</b> to see the QR code for 50% advance payment.";
+    popup.classList.add("show");
+    form.reset();
+    qrContainer.innerHTML="";
+  });
+
+  popupOk.addEventListener("click",()=>{
+    if(qrContainer.innerHTML===""){
+      // Generate QR code
+      popupText.innerHTML=
+        "<b>Scan this QR to Pay ₹"+halfAmount+"</b><br><br>"+
+        "UPI ID: <b>"+upiId+"</b>";
+      const upiLink=
+        "upi://pay?pa="+upiId+
+        "&pn="+encodeURIComponent(payeeName)+
+        "&tn="+encodeURIComponent(note)+
+        "&am="+halfAmount+
+        "&cu=INR";
+      QRCode.toCanvas(upiLink,{width:220},(err,canvas)=>{
+        if(!err){
+          qrContainer.appendChild(canvas);
+        }
+      });
+    } else {
+      // Close popup
+      popup.classList.remove("show");
+      qrContainer.innerHTML="";
+    }
+  });
+
+});
+</script>
+
+</body>
+</html>
