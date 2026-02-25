@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SONU Studio | Rate List</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+
+  /* Custom cursor for the whole page */
+  body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #111;
+    color: #fff;
+    cursor: url('https://cdn-icons-png.flaticon.com/512/32/32195.png'), auto; /* Custom cursor */
+  }
+
+  /* Navbar */
+  header.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: #222;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  header.navbar .logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: #ff6a00;
+  }
+  nav.nav-center a {
+    color: #fff;
+    margin-left: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+  }
+  nav.nav-center a:hover {
+    color: #ff6a00;
+  }
+
+  /* Hero Section */
+  section.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px 50px;
+    text-align: center;
+    background: linear-gradient(135deg, #ff6a00, #ee0979);
+  }
+  section.hero h1 {
+    font-size: 48px;
+    line-height: 1.2;
+    animation: fadeInUp 1s ease forwards;
+  }
+  section.hero h1 span {
+    color: #fff;
+  }
+  section.hero p {
+    font-size: 18px;
+    margin: 20px 0;
+    animation: fadeInUp 1.3s ease forwards;
+  }
+
+  /* Rate List Table */
+  section.rates {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #1c1c1c;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(255,106,0,0.3);
+    animation: fadeIn 1.5s ease forwards;
+  }
+  section.rates h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #ff6a00;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+  }
+  table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+    transition: 0.3s;
+  }
+  table th {
+    color: #ff6a00;
+    font-weight: 600;
+    background: #222;
+  }
+  table tr:hover td {
+    background: #333;
+    transform: scale(1.02);
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 20px;
+    background: #222;
+    color: #aaa;
+    margin-top: 50px;
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+  @keyframes fadeInUp {
+    0% {opacity: 0; transform: translateY(20px);}
+    100% {opacity: 1; transform: translateY(0);}
+  }
+
+  /* Responsive */
+  @media(max-width:768px) {
+    section.hero h1 {font-size: 36px;}
+    table {font-size: 14px;}
+    nav.nav-center a {margin-left: 15px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">SONU Studio</div>
+  <nav class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="About.html">Work</a>
+    <a href="studio.html">Studio</a>
+    <a href="Explore camera.html">Explore Camera</a>
+    <a href="Rate list.html">Rate list</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-left">
+    <h1>SONU STUDIO<br><span>RATE LIST</span></h1>
+    <p>High-quality photography and videography services at transparent prices.</p>
+  </div>
+</section>
+
+<section class="rates">
+  <h2>Our Services & Prices</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Service</th>
+        <th>Duration</th>
+        <th>Price (INR)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Wedding Photography</td><td>Full Day</td><td>₹1,00,000</td></tr>
+      <tr><td>Pre-Wedding Shoot</td><td>Half Day</td><td>₹50,000</td></tr>
+      <tr><td>Haldi Shoot</td><td>2 Hours</td><td>₹10,000</td></tr>
+      <tr><td>Birthday Shoot</td><td>2 Hours</td><td>₹10,000</td></tr>
+      <tr><td>Engagement Shoot</td><td>3 Hours</td><td>₹25,000</td></tr>
+      <tr><td>Fashion Shoot</td><td>4 Hours</td><td>₹1,50,000</td></tr>
+      <tr><td>Brand Shoot</td><td>Half Day</td><td>₹50,000</td></tr>
+      <tr><td>Cinematic Short Film</td><td>Full Day</td><td>₹10,000</td></tr>
+      <tr><td>Maternity Shoot</td><td>2 Hours</td><td>₹10,000</td></tr>
+      <tr><td>Corporate Shoot</td><td>Half Day</td><td>₹15,000</td></tr>
+      <tr><td>Travel / Destination Shoot</td><td>Full Day</td><td>₹35,000</td></tr>
+      <tr><td>Product Shoot</td><td>3 Hours</td><td>₹50,000</td></tr>
+      <tr><td>Newborn Shoot</td><td>2 Hours</td><td>₹10,500</td></tr>
+      <tr><td>Anniversary Shoot</td><td>3 Hours</td><td>₹35,000</td></tr>
+      <tr><td>Family Portrait</td><td>2 Hours</td><td>₹5,500</td></tr>
+      <tr><td>Friends / Group Shoot</td><td>2 Hours</td><td>₹10,000</td></tr>
+      <tr><td>Music Video</td><td>Full Day</td><td>₹70,000</td></tr>
+      <tr><td>Commercial Shoot</td><td>Half Day</td><td>₹20,000</td></tr>
+      <tr><td>Advertisement</td><td>Half Day</td><td>₹18,000</td></tr>
+      <tr><td>Portfolio Shoot</td><td>3 Hours</td><td>₹9,000</td></tr>
+      <tr><td>Modeling Portfolio</td><td>4 Hours</td><td>₹20,000</td></tr>
+      <tr><td>Fashion Catalog</td><td>Full Day</td><td>₹65,000</td></tr>
+      <tr><td>Social Media Content</td><td>2 Hours</td><td>₹10,500</td></tr>
+      <tr><td>Festival Shoot</td><td>Full Day</td><td>₹15,000</td></tr>
+      <tr><td>Graduation Shoot</td><td>2 Hours</td><td>₹8,000</td></tr>
+      <tr><td>Sports Event</td><td>Half Day</td><td>₹10,000</td></tr>
+      <tr><td>Concert / Performance</td><td>Half Day</td><td>₹35,000</td></tr>
+      <tr><td>Charity Event</td><td>Half Day</td><td>₹10,000</td></tr>
+      <tr><td>Workshop / Seminar</td><td>Half Day</td><td>₹10,000</td></tr>
+      <tr><td>School / College Event</td><td>Half Day</td><td>₹40,000</td></tr>
+      <tr><td>Food Photography</td><td>3 Hours</td><td>₹15,000</td></tr>
+      <tr><td>Restaurant Shoot</td><td>4 Hours</td><td>₹15,000</td></tr>
+      <tr><td>Hotel / Resort Shoot</td><td>Half Day</td><td>₹15,000</td></tr>
+      <tr><td>Architecture / Interior</td><td>Full Day</td><td>₹20,000</td></tr>
+      <tr><td>Landscape / Nature Shoot</td><td>Full Day</td><td>₹15,000</td></tr>
+      <tr><td>Drone / Aerial Shoot</td><td>2 Hours</td><td>₹6,000</td></tr>
+      <tr><td>Behind the Scenes</td><td>3 Hours</td><td>₹710,000</td></tr>
+      <tr><td>Vlog / YouTube Content</td><td>Full Day</td><td>₹15,000</td></tr>
+      <tr><td>Podcast Shoot</td><td>2 Hours</td><td>₹6,000</td></tr>
+      <tr><td>Fashion Show</td><td>Half Day</td><td>₹65,000</td></tr>
+      <tr><td>Model Auditions</td><td>Half Day</td><td>₹35,000</td></tr>
+      <tr><td>Film / TV Shoot</td><td>Full Day</td><td>₹35,000</td></tr>
+      <tr><td>Wedding Documentary</td><td>Full Day</td><td>₹60,000</td></tr>
+      <tr><td>Anniversary Shoot</td><td>2 Hours</td><td>₹35,000</td></tr>
+      <tr><td>Corporate Headshots</td><td>2 Hours</td><td>₹25,000</td></tr>
+      <tr><td>Event Coverage</td><td>Half Day</td><td>₹10,000</td></tr>
+      <tr><td>Festival Coverage</td><td>Full Day</td><td>₹15,000</td></tr>
+      <tr><td>Social Campaign Shoot</td><td>3 Hours</td><td>₹8,500</td></tr>
+      <tr><td>Training Video Shoot</td><td>Half Day</td><td>₹25,000</td></tr>
+      <tr><td>Product Launch Shoot</td><td>Half Day</td><td>₹15,000</td></tr>
+      <tr><td>Interactive Workshop</td><td>3 Hours</td><td>₹9,000</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<footer>
+  &copy; 2026 SONU Studio. All Rights Reserved.
+</footer>
+
+</body>
+</html>
